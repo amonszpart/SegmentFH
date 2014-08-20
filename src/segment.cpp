@@ -19,11 +19,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include "segment/SegmentFH.h"
-#include <segment/image.h>
-#include <segment/misc.h>
-#include <segment/pnmfile.h>
-#include "segment/segment-image.h"
+
+#include "segment_fh/wrapper/segmentFH.hpp"
+
+#include <segment_fh/image.h>
+#include <segment_fh/misc.h>
+#include <segment_fh/pnmfile.h>
+#include "segment_fh/segment-image.h"
 
 // Test C++ wrapper
 extern int testSegmentFH();

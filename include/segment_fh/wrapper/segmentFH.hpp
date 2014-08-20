@@ -11,8 +11,8 @@
 
 #include <map>
 #include <vector>
-#include <iostream> // cout, endl
-#include "segment/segment-graph.h"
+#include <iostream>                     // using: cout, endl
+#include "segment_fh/segment-graph.h"   // contains the logic
 
 namespace fh
 {

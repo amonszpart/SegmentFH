@@ -20,10 +20,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #define FH_SEGMENT_IMAGE
 
 #include <cstdlib>
-#include <segment/image.h>
-#include <segment/misc.h>
-#include <segment/filter.h>
-#include "segment/segment-graph.h"
+#include <segment_fh/image.h>
+#include <segment_fh/misc.h>
+#include <segment_fh/filter.h>
+#include "segment_fh/segment-graph.h"
 
 namespace fh
 {

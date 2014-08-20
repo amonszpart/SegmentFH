@@ -1,4 +1,12 @@
-#include "segment/SegmentFH.h"
+/*
+ * Library author:          Copyright (C) 2006 Pedro Felzenszwalb
+ * Original Source code:    http://cs.brown.edu/~pff/segment/
+ *
+ * SegmentFH.h author:      Aron Monszpart
+ * E-mail:                  a.monszpart@cs.ucl.ac.uk
+*/
+
+#include "segment_fh/wrapper/segmentFH.hpp"
 
 //! \brief Tests the SegmentFH class by providing it graph with one vertical line in the middle.
 //! \brief Expects two components as output.
