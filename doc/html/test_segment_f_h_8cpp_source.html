@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>SegmentFH: /home/bontius/workspace/felzenTest/src/testSegmentFH.cpp Source File</title>
+<title>SegmentFH: src/testSegmentFH.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,44 +87,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">testSegmentFH.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;segment/SegmentFH.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> testSegmentFH()</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">int</span> W = 10, H = 5;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classfh_1_1_segment_f_h.html">fh::SegmentFH&lt;float&gt;</a> segment( W * H );</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">// add a vertical edge at W/2</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> split = W / 2;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y != H; ++y )</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x != W; ++x )</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">if</span> ( x &lt; W-1 )</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                segment.addEdge( y * W + x, y * W + x + 1, (x == split ) ? 1.f : 0.1f );</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> ( y &lt; H-1 )</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                segment.addEdge( y * W + x, (y+1) * W + x, 0.1f );</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::vector&lt;std::vector&lt;int&gt; &gt; comps;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    segment.segment( comps, H * W / 4, <span class="keyword">true</span> );</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> c=  0; c != comps.size(); ++c )</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;comps[&quot;</span> &lt;&lt; c &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i != comps[c].size(); ++i )</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            std::cout &lt;&lt; comps[c][i] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> ( comps.size() != 2 )</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::cerr &lt;&lt; comps.size() &lt;&lt; <span class="stringliteral">&quot; components, instead of 2!&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> !(comps.size() == 2);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-<div class="ttc" id="classfh_1_1_segment_f_h_html"><div class="ttname"><a href="classfh_1_1_segment_f_h.html">fh::SegmentFH</a></div><div class="ttdoc">C++ wrapper for super-pixelization by [Felzenszwalb and Huttenlocher 2004]. </div><div class="ttdef"><b>Definition:</b> <a href="_segment_f_h_8h_source.html#l00022">SegmentFH.h:22</a></div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Library author:          Copyright (C) 2006 Pedro Felzenszwalb</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Original Source code:    http://cs.brown.edu/~pff/segment/</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * SegmentFH.h author:      Aron Monszpart</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * E-mail:                  a.monszpart@cs.ucl.ac.uk</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;segment_fh/wrapper/segmentFH.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> testSegmentFH()</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> W = 10, H = 5;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classfh_1_1_segment_f_h.html">fh::SegmentFH&lt;float&gt;</a> segment( W * H );</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// add a vertical edge at W/2</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> split = W / 2;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y != H; ++y )</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x != W; ++x )</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> ( x &lt; W-1 )</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                segment.addEdge( y * W + x, y * W + x + 1, (x == split ) ? 1.f : 0.1f );</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> ( y &lt; H-1 )</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                segment.addEdge( y * W + x, (y+1) * W + x, 0.1f );</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::vector&lt;std::vector&lt;int&gt; &gt; comps;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    segment.segment( comps, H * W / 4, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> c=  0; c != comps.size(); ++c )</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;comps[&quot;</span> &lt;&lt; c &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i != comps[c].size(); ++i )</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            std::cout &lt;&lt; comps[c][i] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> ( comps.size() != 2 )</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::cerr &lt;&lt; comps.size() &lt;&lt; <span class="stringliteral">&quot; components, instead of 2!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> !(comps.size() == 2);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="ttc" id="classfh_1_1_segment_f_h_html"><div class="ttname"><a href="classfh_1_1_segment_f_h.html">fh::SegmentFH</a></div><div class="ttdoc">C++ wrapper for super-pixelization by [Felzenszwalb and Huttenlocher 2004]. </div><div class="ttdef"><b>Definition:</b> <a href="segment_f_h_8hpp_source.html#l00022">segmentFH.hpp:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 20 2014 10:39:07 for SegmentFH by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 20 2014 10:48:00 for SegmentFH by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
